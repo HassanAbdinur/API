@@ -1,3 +1,11 @@
-import 'dotenv/config';
+import express from 'express';
 
-console.log('hello world, we are runnning on nodemon and nodejs');
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
+app.listen(3000, () => 
+    console.log('listening on port 3000'),
+);
