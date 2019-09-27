@@ -7,8 +7,14 @@ const app = express();
 app.use(cors());
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Received a GET HTTP method');
 });
+
+app.post('/', (req, res) => {
+    res.send('Received a POST HTTP method');
+});
+
+
 
 app.listen(process.env.PORT, () => 
     console.log(`App is listening on ${process.env.PORT}!`),
