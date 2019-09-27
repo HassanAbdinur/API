@@ -14,7 +14,13 @@ app.post('/', (req, res) => {
     res.send('Received a POST HTTP method');
 });
 
+app.put('/', (req, res) => {
+    res.send('Received a PUT HTTP method');
+});
 
+app.delete('/', (req, res) => {
+    res.send('Received a DELETE HTTP method');
+});
 
 app.listen(process.env.PORT, () => 
     console.log(`App is listening on ${process.env.PORT}!`),
