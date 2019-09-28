@@ -2,6 +2,7 @@ import uuidv4 from 'uuid/v4';
 import 'dotenv/config';
 import cors from 'cors';
 import express from 'express';
+import models from './models';
 
 const app = express();
 
@@ -10,30 +11,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
-
-let users = {
-    1: {
-        id: '1',
-        username: 'Hassan',
-    },
-    2: {
-        id: '2',
-        username: 'Ahmed',
-    },
-};
-
-let messages= {
-    1: {
-        id: '1',
-        text: 'Hello World',
-        userId: '1',
-    },
-    2: {
-        id: '2',
-        text: 'Goodbye World',
-        userId: '2'
-    },
-};
 
 app.get('/users', (req, res) => {
     return res.send(Object.values(users));
@@ -52,7 +29,10 @@ app.get('/messages/:messageId', (req, res) => {
 });
 
 app.use((req, res, next) => {
-    req.me = users[1];
+    req.context = {
+        models,
+        me: models.use[1],
+    }
     next();
 });
 
