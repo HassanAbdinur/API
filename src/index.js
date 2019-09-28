@@ -12,6 +12,10 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/session', (req, res) => {
+    return res.send(users[req.me.id]);
+});
+
 app.get('/users', (req, res) => {
     return res.send(Object.values(users));
 });
@@ -26,14 +30,6 @@ app.get('/messages', (req, res) => {
 
 app.get('/messages/:messageId', (req, res) => {
     return res.send(messages[req.params.messageId]);
-});
-
-app.use((req, res, next) => {
-    req.context = {
-        models,
-        me: models.use[1],
-    }
-    next();
 });
 
 app.post('/messages', (req, res) => {
@@ -59,8 +55,12 @@ app.delete('/messages/:messagesId', (req, res) => {
     res.send(messages);
 });
 
-app.get('/session', (req, res) => {
-    return res.send(users[req.me.id]);
+app.use((req, res, next) => {
+    req.context = {
+        models,
+        me: models.users[1],
+    };
+    next();
 });
 
 app.listen(process.env.PORT, () => 
