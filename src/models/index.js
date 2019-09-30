@@ -8,3 +8,6 @@ const connectDb = () => {
 };
 
 const models = { User, Message };
+
+export { connectDb };
+
