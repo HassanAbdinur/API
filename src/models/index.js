@@ -1,3 +1,5 @@
+import mongoose from 'mongoose';
+
 let users = {
     1: {
         id: '1',
