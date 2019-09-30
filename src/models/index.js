@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { model } from 'mongoose';
 
 import User from './user';
 import Message from './message';
@@ -11,3 +11,4 @@ const models = { User, Message };
 
 export { connectDb };
 
+export default models;
