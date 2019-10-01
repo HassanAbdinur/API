@@ -5,6 +5,8 @@ import express from 'express';
 import models from './models';
 import routes from './routes';
 
+import models, { connectDb } from './models';
+
 const app = express();
 
 app.use(cors());
