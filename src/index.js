@@ -27,6 +27,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.listen(process.env.PORT, () => 
-    console.log(`App is listening on ${process.env.PORT}!`),
-);
+connectDb().then(async () => {
+    app.listen(process.env.PORT, () => 
+    console.log(`App is listening on port ${process.env.PORT}!`)
+    );
+});
