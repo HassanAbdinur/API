@@ -13,7 +13,7 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ : true }));
 
 app.use('/session', routes.session);
 app.use('/users', routes.user);
