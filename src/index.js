@@ -21,10 +21,10 @@ app.use('/session', routes.session);
 app.use('/users', routes.user);
 app.use('/messages', routes.message);
 
-app.use((req, res, next) => {
+app.use(async(req, res, next) => {
     req.context = {
         models,
-        me: models.users[1],
+        me: await models.User.findByLogin('hassan'),
     };
     next();
 });
@@ -72,7 +72,7 @@ const createUsersWithMessages = async () => {
     await message1.save();
     await message2.save();
     await message3.save();
-    
+
     await user1.save();
     await user2.save();
 };
