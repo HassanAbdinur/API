@@ -12,7 +12,7 @@ router.get('/:messageId', async (req, res) => {
     const message = await req.res.context.models.Message.findById(
         req.params.messageId,
     );
-    return res.send(Message);
+    return res.send(message);
 });
 
 export default router;
