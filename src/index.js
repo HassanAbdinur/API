@@ -72,5 +72,7 @@ const createUsersWithMessages = async () => {
     await message1.save();
     await message2.save();
     await message3.save();
+    
     await user1.save();
+    await user2.save();
 };
