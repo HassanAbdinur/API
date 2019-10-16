@@ -27,6 +27,8 @@ app.use((req, res, next) => {
     next();
 });
 
+const eraseDatabaseOnSync = true;
+
 connectDb().then(async () => {
     if (eraseDatabaseOnSync) {
         await Promise.all([
