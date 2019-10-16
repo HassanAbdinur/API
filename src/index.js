@@ -9,12 +9,14 @@ import models, { connectDb } from './models';
 
 const app = express();
 
+// Application-level Middlware
 app.use(cors());
 
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
+// Routes
 app.use('/session', routes.session);
 app.use('/users', routes.user);
 app.use('/messages', routes.message);
@@ -35,9 +37,23 @@ connectDb().then(async () => {
             models.User.deleteMany({}),
             models.Message.deleteMany({}),
         ]);
+
+        createUsersWithMessages();
     }
 
     app.listen(process.env.PORT, () => 
     console.log(`App is listening on port ${process.env.PORT}!`),
     );
 });
+
+const createUsersWithMessages = async () => {
+    const user1 = new models.User({
+        username: 'hassan',
+    });
+
+    const message1 = new models.Message({
+        text: 'Published the road to learn react',
+        id: 
+    });
+    await user1.save();
+};
