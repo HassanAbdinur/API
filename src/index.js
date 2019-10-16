@@ -51,9 +51,25 @@ const createUsersWithMessages = async () => {
         username: 'hassan',
     });
 
+    const user2 = new models.User({
+        username: 'mohamed',
+    });
+
     const message1 = new models.Message({
         text: 'Published the road to learn react',
-        id: 
+        user: user1.id,
     });
+
+    const message2 = new models.Message({
+        text: 'Happy to release...',
+        user: user2.id,
+    });
+
+    const message3 = new models.Message({
+        text: 'Published a complete...',
+        user: user2.id,
+    });
+    await message1.save();
+    
     await user1.save();
 };
