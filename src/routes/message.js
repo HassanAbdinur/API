@@ -4,7 +4,7 @@ import { Router } from 'express';
 const router = Router();
 
 router.get('/', async (req, res) => {
-    const messages = await req.res.context.models.Message.find();
+    const messages = await req.context.models.Message.find();
     return res.send(messages);
 });
 
