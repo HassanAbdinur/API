@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:messageId', async (req, res) => {
-    const message = await req.res.context.models.Message.findByLogin(
+    const message = await req.res.context.models.Message.findById(
         req.params.messageId,
     );
     return res.send(Message);
